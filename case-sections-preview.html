@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — Novas seções de case (Reels / Site / VSL)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/case.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="LAMIDIA — Página inicial">
+      <span class="logo__mark">LAMIDIA</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+      <ul class="main-nav__list">
+        <li><a href="index.html" class="main-nav__link">Home</a></li>
+        <li><a href="quem-somos.html" class="main-nav__link">Quem Somos</a></li>
+        <li><a href="portfolio.html" class="main-nav__link is-active">Portfólio</a></li>
+        <li><a href="index.html#como-fazemos" class="main-nav__link">Como Fazemos</a></li>
+        <li><a href="#" class="main-nav__link">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="#contato" class="btn btn--primary btn--nav">Vamos Conversar</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main style="padding-top: var(--header-h);">
+
+  <!-- ============ NOVA SEÇÃO: Reels do Instagram ============ -->
+  <section class="case-reels">
+    <div class="container">
+      <p class="eyebrow eyebrow--center">Série de Vídeos para as Redes Sociais</p>
+      <div class="case-reels__grid">
+
+        <article class="case-reels__item">
+          <div class="case-reels__video-wrap">
+            <video poster="images/cases/hub4/reel-01-poster.jpg" controls playsinline>
+              <source src="videos/hub4-reel-01.mp4" type="video/mp4">
+            </video>
+          </div>
+          <h4>Reels - Episódio 01</h4>
+        </article>
+
+        <article class="case-reels__item">
+          <div class="case-reels__video-wrap">
+            <video poster="images/cases/hub4/reel-02-poster.jpg" controls playsinline>
+              <source src="videos/hub4-reel-02.mp4" type="video/mp4">
+            </video>
+          </div>
+          <h4>Reels - Episódio 02</h4>
+        </article>
+
+        <article class="case-reels__item">
+          <div class="case-reels__video-wrap">
+            <video poster="images/cases/hub4/reel-03-poster.jpg" controls playsinline>
+              <source src="videos/hub4-reel-03.mp4" type="video/mp4">
+            </video>
+          </div>
+          <h4>Reels - Episódio 03</h4>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NOVA SEÇÃO: Mockup completo do site ============ -->
+  <section class="case-site-full">
+    <div class="container">
+      <p class="eyebrow eyebrow--center">Mockup do Site</p>
+
+      <div class="case-site-full__browsers">
+        <!-- PLACEHOLDER: screenshots das páginas internas do site -->
+        <div class="case-site-full__browser">
+          <div class="case-site-full__browser-bar"><span></span><span></span><span></span></div>
+          <img src="images/cases/hub4/site-page-01.jpg" alt="Página Quem Somos do site HUB4" loading="lazy" onerror="this.parentElement.classList.add('is-placeholder')">
+        </div>
+        <div class="case-site-full__browser">
+          <div class="case-site-full__browser-bar"><span></span><span></span><span></span></div>
+          <img src="images/cases/hub4/site-page-02.jpg" alt="Página Equipe do site HUB4" loading="lazy" onerror="this.parentElement.classList.add('is-placeholder')">
+        </div>
+        <div class="case-site-full__browser">
+          <div class="case-site-full__browser-bar"><span></span><span></span><span></span></div>
+          <img src="images/cases/hub4/site-page-03.jpg" alt="Página interna mobile do site HUB4" loading="lazy" onerror="this.parentElement.classList.add('is-placeholder')">
+        </div>
+      </div>
+
+      <div class="case-site-full__laptop">
+        <div class="case-site-mockup__device">
+          <div class="case-site-mockup__bar"><span></span><span></span><span></span></div>
+          <img src="images/cases/hub4/site-laptop.jpg" alt="Site HUB4 em laptop" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NOVA SEÇÃO: VSL ============ -->
+  <section class="case-vsl">
+    <div class="container">
+      <p class="eyebrow eyebrow--light">Vídeo de Apresentação</p>
+      <div class="case-vsl__player">
+        <video poster="images/cases/hub4/vsl-poster.jpg" controls playsinline>
+          <source src="videos/hub4-vsl.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+<script src="js/case.js"></script>
+</body>
+</html>
