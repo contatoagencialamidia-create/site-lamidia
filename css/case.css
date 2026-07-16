@@ -563,6 +563,10 @@
   background-attachment: fixed;
 }
 
+.case-condo-sp .hub4-branding-parallax {
+  background-image: url('../images/cases/condo-sp/bg-condo-sp-02.jpeg');
+}
+
 .case-identity {
   background: var(--bg-night-deep);
   padding-block: clamp(56px, 8vw, 104px);
@@ -615,6 +619,25 @@
   width: min(100%, 560px);
   max-width: none;
   max-height: none;
+}
+
+.case-condo-sp .case-identity--hub4 {
+  background-color: #000;
+  background-image: none;
+}
+
+.case-condo-sp .case-identity--hub4::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('../images/cases/condo-sp/bg-condo-sp.webp') center / cover no-repeat;
+  opacity: .35;
+}
+
+.case-condo-sp .case-identity--hub4 .case-identity__inner {
+  position: relative;
+  z-index: 1;
 }
 
 /* Vídeo institucional PK7 */
@@ -728,6 +751,85 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Peças gráficas Condo SP */
+.case-condo-design {
+  min-height: clamp(540px, 70vw, 1100px);
+  background-color: #07152f;
+  background-image: url('../images/cases/condo-sp/flyers-perspectiva-condo-sp.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.case-condo-flyers-muted {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(460px, 62vw, 920px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 96px) clamp(24px, 6vw, 88px);
+  background: #000;
+}
+
+.case-condo-flyers-muted::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('../images/cases/condo-sp/flyers-perspectiva-condo-sp.webp') center / cover no-repeat;
+  opacity: .22;
+}
+
+.case-condo-flyers-muted__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(240px, .65fr) minmax(420px, 1.35fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 120px);
+  width: min(100%, 1280px);
+  margin-inline: auto;
+}
+
+.case-condo-flyers-muted__video,
+.case-condo-flyers-muted__image {
+  margin: 0;
+}
+
+.case-condo-flyers-muted__video video {
+  display: block;
+  width: min(100%, 340px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+
+.case-condo-flyers-muted__image img {
+  display: block;
+  width: 115%;
+  max-width: none;
+  height: auto;
+  margin-left: -7.5%;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-condo-flyers-muted__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .case-condo-flyers-muted__image img {
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
 }
 
 /* Branding em vídeo — Maestro Adriano Machado */
@@ -1557,6 +1659,10 @@
   align-items: start;
   gap: clamp(24px, 4vw, 48px);
   margin-top: 40px;
+}
+.case-site-gallery--single {
+  grid-template-columns: minmax(0, 920px);
+  justify-content: center;
 }
 .case-site-gallery__item { margin: 0; text-align: center; }
 .case-site-gallery__item img {
