@@ -15,4 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
       track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
     });
   });
+
+  // Em grupos de vídeo, mantém somente um player em reprodução por vez.
+  document.querySelectorAll('[data-exclusive-playback]').forEach(group => {
+    const videos = group.querySelectorAll('video');
+    videos.forEach(video => {
+      video.addEventListener('play', () => {
+        videos.forEach(otherVideo => {
+          if (otherVideo !== video && !otherVideo.paused) otherVideo.pause();
+        });
+      });
+    });
+  });
 });

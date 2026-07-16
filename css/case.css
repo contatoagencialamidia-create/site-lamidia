@@ -400,6 +400,9 @@
   transition: background-color .2s var(--ease);
 }
 .case-others__card:hover .case-others__btn { background: var(--accent-hover); }
+.case-others__card--soon { cursor: default; }
+.case-others__card--soon .case-others__btn,
+.case-others__card--soon:hover .case-others__btn { background: rgba(120, 113, 77, 0.92); }
 
 /* =========================================================
    NOVAS SEÇÕES — Reels / Mockup completo de site / VSL
@@ -477,8 +480,1118 @@
 .case-vsl__player video { width: 100%; height: 100%; object-fit: cover; }
 
 /* =========================================================
+   Variações modulares para cases com narrativa expandida
+   ========================================================= */
+.case-section__title {
+  max-width: 760px;
+  margin: 10px auto 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  text-align: center;
+  color: var(--c-apollo);
+}
+.case-section__title--light { color: var(--c-olympus); }
+
+/* Hero com mídia vertical sem ampliação acima da largura original */
+.case-banner--media {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.case-banner--media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(249,240,233,0.08) 0%, rgba(249,240,233,0.7) 46%, var(--c-ionic) 72%);
+}
+.case-banner__background-img {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: -2;
+  width: min(700px, 50vw);
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.case-banner--media .case-banner__inner {
+  position: relative;
+  z-index: 1;
+  padding-left: clamp(24px, 5vw, 64px);
+}
+
+/* Hero HUB4 */
+.case-hub4 .case-banner--hub4 {
+  background-image: url('../images/cases/hub4/bg-sessao1.png');
+  background-size: cover;
+  background-position: center center;
+}
+.case-hub4 .case-banner__text p { max-width: 54ch; }
+
+.case-media-feature {
+  width: fit-content;
+  max-width: 100%;
+  margin: 36px auto 0;
+  text-align: center;
+}
+.case-media-feature img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 24px 48px -30px rgba(44,17,2,0.4);
+}
+.case-media-feature figcaption,
+.case-site-gallery figcaption {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: rgba(44,17,2,0.58);
+}
+
+/* Processo de marca HUB4 com parallax progressivo */
+.case-hub4 .hub4-branding-parallax {
+  position: relative;
+  min-height: clamp(320px, 44vw, 620px);
+  background-color: var(--c-apollo);
+  background-image: url('../images/cases/hub4/hub4-branding-processo.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.case-identity {
+  background: var(--bg-night-deep);
+  padding-block: clamp(56px, 8vw, 104px);
+}
+.case-identity__mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 240px;
+  margin: 36px auto 0;
+  padding: 40px;
+  max-width: 760px;
+  border: 1px solid rgba(249,240,233,0.12);
+  border-radius: 6px;
+  background: rgba(249,240,233,0.03);
+}
+.case-identity__mark img {
+  width: auto;
+  max-width: min(100%, 460px);
+  max-height: 160px;
+  object-fit: contain;
+}
+
+/* Aplicação central da marca HUB4 */
+.case-hub4 .case-identity--hub4 {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--bg-night-deep);
+  background-image: linear-gradient(rgba(18,17,8,0.55), rgba(18,17,8,0.68)), url('../images/cases/hub4/bg-sessao3.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-hub4 .case-identity--hub4 .case-identity__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(360px, 48vw, 640px);
+}
+.case-hub4 .case-identity--hub4 .case-identity__mark {
+  min-height: 0;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 72px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.case-hub4 .case-identity--hub4 .case-identity__mark img {
+  width: min(100%, 560px);
+  max-width: none;
+  max-height: none;
+}
+
+/* Vídeo institucional PK7 */
+.case-pk7-video { background: var(--c-ionic); }
+.case-pk7-video__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px clamp(24px, 5vw, 64px);
+}
+.case-pk7-video__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.62);
+}
+.case-pk7-video__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(560px, 72vw, 820px);
+  overflow: hidden;
+  padding: clamp(36px, 5vw, 64px) clamp(24px, 5vw, 64px);
+  background-color: #05022d;
+}
+.case-pk7-video__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/cases/pk7-produçoes/bg-sessão3.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+.case-pk7-video__stage video {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 360px);
+  max-height: 680px;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #05022d;
+  box-shadow: 0 28px 70px -24px rgba(0,0,0,0.75);
+}
+
+/* Design gráfico Majestic Nails */
+.case-majestic-design { background: var(--c-ionic); }
+.case-majestic-design__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-majestic-design__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-majestic-design__stage {
+  min-height: clamp(520px, 68vw, 860px);
+  background-color: #b32372;
+  background-image: url('../images/cases/majestic-nails/Mockup flyer Majestic.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Design gráfico Phytoflora Farma */
+.case-phytoflora-design { background: var(--c-ionic); }
+.case-phytoflora-design__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-phytoflora-design__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-phytoflora-design__stage {
+  min-height: clamp(540px, 70vw, 1100px);
+  background-color: #9ab92b;
+  background-image: url('../images/cases/phytoflora-farma/Flyers em perspectiva - Phytoflora.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Design gráfico ResidentPRO */
+.case-resident-design { background: var(--c-ionic); }
+.case-resident-design__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-resident-design__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-resident-design__stage {
+  min-height: clamp(540px, 70vw, 1100px);
+  background-color: #003f5c;
+  background-image: url('../images/cases/resident-pro/Flyers em perspectiva - ResidentPRO.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Branding em vídeo — Maestro Adriano Machado */
+.case-maestro-branding {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(420px, 56.25vw, 900px);
+  overflow: hidden;
+  background: #02040c;
+}
+.case-maestro-branding__video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.case-maestro-branding__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(0,2,10,0.28) 0%, rgba(0,2,10,0.04) 48%, rgba(0,2,10,0.12) 100%);
+}
+
+/* Versões negativa e positiva — Maestro Adriano Machado */
+.case-maestro-signatures { background: #f4f4f4; }
+.case-maestro-signatures__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.case-maestro-signature { min-width: 0; }
+.case-maestro-signature h2 {
+  margin: 0;
+  padding: clamp(30px, 4vw, 54px) clamp(24px, 5vw, 64px);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  line-height: 1.3;
+  text-align: center;
+  color: rgba(22,22,22,0.82);
+}
+.case-maestro-signature__panel {
+  min-height: clamp(440px, 43vw, 690px);
+  display: grid;
+  place-items: center;
+  padding: clamp(44px, 7vw, 112px);
+}
+.case-maestro-signature__panel--light { background: #fff; }
+.case-maestro-signature__panel--dark { background: #000; }
+.case-maestro-signature__panel img {
+  display: block;
+  width: min(70%, 427px);
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-maestro-signatures__grid { grid-template-columns: 1fr; }
+  .case-maestro-signature__panel { min-height: 360px; }
+}
+
+/* Projeto Orquestra no Tapete Vermelho */
+.case-maestro-red-carpet { background: var(--c-ionic); }
+.case-maestro-red-carpet__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-maestro-red-carpet__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-maestro-red-carpet__body {
+  padding: clamp(42px, 5vw, 72px) clamp(24px, 7vw, 112px) clamp(80px, 10vw, 150px);
+  background: #680000;
+}
+.case-maestro-red-carpet--tango .case-maestro-red-carpet__body {
+  background: #061a11;
+}
+.case-maestro-red-carpet__main-video {
+  width: min(100%, 960px);
+  margin: 0 auto;
+}
+.case-maestro-red-carpet__main-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #210000;
+  box-shadow: 0 24px 54px rgba(32,0,0,0.34);
+}
+.case-maestro-red-carpet__showcase {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(520px, 1.28fr);
+  align-items: center;
+  gap: clamp(64px, 9vw, 140px);
+  width: min(100%, 1320px);
+  margin: clamp(88px, 11vw, 160px) auto 0;
+}
+.case-maestro-red-carpet__reels,
+.case-maestro-red-carpet__carousel {
+  margin: 0;
+  text-align: center;
+}
+.case-maestro-red-carpet__showcase h3 {
+  margin: 0 0 20px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.3;
+  color: #fff;
+}
+.case-maestro-red-carpet__reels video {
+  display: block;
+  width: min(100%, 370px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #210000;
+  box-shadow: 0 20px 44px rgba(32,0,0,0.34);
+}
+.case-maestro-red-carpet__reels figcaption {
+  margin-top: 18px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.82);
+}
+.case-maestro-red-carpet__carousel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 20px 44px rgba(32,0,0,0.28);
+}
+
+@media (max-width: 820px) {
+  .case-maestro-red-carpet__showcase {
+    grid-template-columns: 1fr;
+    gap: 72px;
+    margin-top: 80px;
+  }
+  .case-maestro-red-carpet__carousel img { width: min(100%, 760px); margin-inline: auto; }
+}
+
+/* Carrosséis de artes para Instagram — Maestro Adriano Machado */
+.case-maestro-instagram {
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 3vw, 52px) clamp(72px, 8vw, 120px);
+  background: #000;
+}
+.case-maestro-instagram h2 {
+  margin: 0 0 clamp(48px, 6vw, 80px);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(255,255,255,0.9);
+}
+.case-maestro-instagram__rows {
+  width: min(100%, 1540px);
+  margin-inline: auto;
+}
+.case-maestro-instagram__row {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-color: rgba(255,255,255,0.35) transparent;
+}
+.case-maestro-instagram__row + .case-maestro-instagram__row {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+.case-maestro-instagram__grid {
+  min-width: 960px;
+}
+.case-maestro-instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%;
+}
+.case-maestro-instagram__grid img,
+.case-maestro-instagram__grid video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #090909;
+}
+
+@media (max-width: 760px) {
+  .case-maestro-instagram { padding-inline: 16px; }
+  .case-maestro-instagram__grid { min-width: 840px; }
+}
+
+/* Site oficial e landing pages — Maestro Adriano Machado */
+.case-maestro-sites { background: #fff; }
+.case-maestro-sites__heading {
+  padding: 36px clamp(24px, 5vw, 64px);
+  background: #f1f1f1;
+}
+.case-maestro-sites__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.66);
+}
+.case-maestro-sites__stage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  row-gap: clamp(48px, 6vw, 88px);
+  padding: clamp(28px, 3vw, 52px) clamp(20px, 2vw, 36px) clamp(72px, 7vw, 112px);
+  overflow: hidden;
+  background: #fff;
+}
+.case-maestro-sites__page,
+.case-maestro-sites__laptop {
+  margin: 0;
+}
+.case-maestro-sites__page--red-carpet {
+  grid-column: 3 / 6;
+  grid-row: 2;
+}
+.case-maestro-sites__page--tango {
+  grid-column: 8 / 11;
+  grid-row: 2;
+}
+.case-maestro-sites__laptop {
+  grid-column: 3 / 11;
+  grid-row: 1;
+  width: min(100%, 980px);
+  justify-self: center;
+}
+.case-maestro-sites img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .case-maestro-sites__stage {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-inline: 24px;
+  }
+  .case-maestro-sites__page,
+  .case-maestro-sites__laptop {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0;
+  }
+  .case-maestro-sites__laptop { order: -1; }
+  .case-maestro-sites__page { width: min(100%, 520px); margin-inline: auto; }
+}
+
+/* Edição de vídeo — Maestro Adriano Machado */
+.case-maestro-video-editing {
+  padding: clamp(48px, 6vw, 84px) clamp(24px, 8vw, 128px) clamp(72px, 9vw, 128px);
+  background: #000;
+}
+.case-maestro-video-editing h2 {
+  margin: 0 0 clamp(36px, 5vw, 64px);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+  text-align: center;
+  color: #fff;
+}
+.case-maestro-video-editing video {
+  display: block;
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #050505;
+  box-shadow: 0 26px 60px rgba(0,0,0,0.42);
+}
+
+/* Conteúdo para redes sociais ResidentPRO */
+.case-resident-social { background: var(--c-ionic); }
+.case-resident-social__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-resident-social__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-resident-social__stage {
+  min-height: clamp(620px, 64vw, 840px);
+  display: grid;
+  align-items: center;
+  padding: clamp(48px, 6vw, 80px) clamp(28px, 7vw, 112px);
+  background: linear-gradient(90deg, #082d49 0%, #236a86 50%, #4a9fba 100%);
+}
+.case-resident-social__grid {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.65fr) minmax(480px, 1.35fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 128px);
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+.case-resident-social__video,
+.case-resident-social__image { margin: 0; }
+.case-resident-social__video { text-align: center; }
+.case-resident-social__video video {
+  display: block;
+  width: min(100%, 380px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 16px 32px rgba(1, 25, 42, 0.35);
+}
+.case-resident-social__video figcaption {
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.92);
+}
+.case-resident-social__image img {
+  display: block;
+  width: 130%;
+  max-width: none;
+  height: auto;
+  margin-left: -15%;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-resident-social__stage { padding-inline: 24px; }
+  .case-resident-social__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .case-resident-social__image img { width: min(100%, 680px); margin-inline: auto; }
+}
+
+/* Anúncios online ResidentPRO com parallax */
+.case-resident-ads { background: var(--c-ionic); }
+.case-resident-ads__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-resident-ads__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-resident-ads__parallax {
+  min-height: clamp(480px, 58vw, 860px);
+  background-color: #edf0f1;
+  background-image: url('../images/cases/resident-pro/Anuncios facebook e Instagram - ResidentPRO.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 900px) {
+  .case-resident-ads__parallax { background-attachment: scroll; }
+}
+
+/* Conteúdo para redes sociais Phytoflora Farma */
+.case-phytoflora-social { background: var(--c-ionic); }
+.case-phytoflora-social__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-phytoflora-social__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-phytoflora-social__stage {
+  min-height: clamp(620px, 64vw, 840px);
+  display: grid;
+  align-items: center;
+  padding: clamp(48px, 6vw, 80px) clamp(28px, 7vw, 112px);
+  background: linear-gradient(90deg, #72966e 0%, #8fb58c 46%, #c9e5c7 100%);
+}
+.case-phytoflora-social__grid {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.65fr) minmax(480px, 1.35fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 128px);
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+.case-phytoflora-social__video,
+.case-phytoflora-social__image { margin: 0; }
+.case-phytoflora-social__video { text-align: center; }
+.case-phytoflora-social__video video {
+  display: block;
+  width: min(100%, 380px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 16px 32px rgba(31, 62, 31, 0.3);
+}
+.case-phytoflora-social__video figcaption {
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.92);
+}
+.case-phytoflora-social__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-phytoflora-social__stage { padding-inline: 24px; }
+  .case-phytoflora-social__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .case-phytoflora-social__image img { width: min(100%, 680px); margin-inline: auto; }
+}
+
+/* Anúncios online Phytoflora Farma com parallax */
+.case-phytoflora-ads { background: var(--c-ionic); }
+.case-phytoflora-ads__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-phytoflora-ads__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-phytoflora-ads__parallax {
+  min-height: clamp(480px, 58vw, 860px);
+  background-color: #edf0f1;
+  background-image: url('../images/cases/phytoflora-farma/Anuncios facebook e Instagram - Phytoflora.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 900px) {
+  .case-phytoflora-ads__parallax { background-attachment: scroll; }
+}
+
+/* Conteúdo para redes sociais Majestic Nails */
+.case-majestic-social { background: var(--c-ionic); }
+.case-majestic-social__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-majestic-social__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-majestic-social__stage {
+  min-height: clamp(600px, 64vw, 800px);
+  display: grid;
+  align-items: center;
+  padding: clamp(48px, 6vw, 80px) clamp(28px, 7vw, 112px);
+  background: linear-gradient(90deg, #983d7b 0%, #b66f9c 38%, #d6bdc8 70%, #e7e0e1 100%);
+}
+.case-majestic-social__grid {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.65fr) minmax(480px, 1.35fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 128px);
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+.case-majestic-social__video,
+.case-majestic-social__image { margin: 0; }
+.case-majestic-social__video { text-align: center; }
+.case-majestic-social__video video {
+  display: block;
+  width: min(100%, 360px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 16px 32px rgba(54, 14, 42, 0.28);
+}
+.case-majestic-social__video figcaption {
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.9);
+}
+.case-majestic-social__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-majestic-social__stage { padding-inline: 24px; }
+  .case-majestic-social__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .case-majestic-social__image img { width: min(100%, 680px); margin-inline: auto; }
+}
+
+/* Anúncios online Majestic Nails com parallax */
+.case-majestic-ads { background: var(--c-ionic); }
+.case-majestic-ads__heading { padding: 36px clamp(24px, 5vw, 64px); }
+.case-majestic-ads__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.72);
+}
+.case-majestic-ads__parallax {
+  min-height: clamp(480px, 58vw, 860px);
+  background-color: #edf0f1;
+  background-image: url('../images/cases/majestic-nails/Anuncios facebook - Majestic.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 900px) {
+  .case-majestic-ads__parallax { background-attachment: scroll; }
+}
+
+/* Turnê Tribute of Nirvana */
+.case-pk7-nirvana,
+.case-pk7-beegees,
+.case-pk7-oingo { background: var(--c-ionic); }
+.case-pk7-nirvana__heading,
+.case-pk7-social__heading,
+.case-pk7-ads__heading,
+.case-pk7-beegees__heading,
+.case-pk7-beegees-social__heading,
+.case-pk7-oingo__heading,
+.case-pk7-oingo-social__heading { padding: 28px clamp(24px, 5vw, 64px); }
+.case-pk7-nirvana__heading h2,
+.case-pk7-social__heading h2,
+.case-pk7-ads__heading h2,
+.case-pk7-beegees__heading h2,
+.case-pk7-beegees-social__heading h2,
+.case-pk7-oingo__heading h2,
+.case-pk7-oingo-social__heading h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(44,17,2,0.62);
+}
+.case-pk7-nirvana__heading span { margin-inline: 8px; }
+.case-pk7-nirvana__stage,
+.case-pk7-beegees__stage,
+.case-pk7-oingo__stage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: clamp(620px, 72vw, 860px);
+  padding: 0 clamp(24px, 5vw, 64px) clamp(36px, 5vw, 64px);
+  background-color: #000;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-pk7-nirvana__stage {
+  background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)), url('../images/cases/pk7-produçoes/Mockup flyer turne Nirvana.png');
+}
+.case-pk7-beegees__stage {
+  background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)), url('../images/cases/pk7-produçoes/Mockup flyer turne Bee Gees.png');
+}
+.case-pk7-oingo__stage {
+  background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.72)), url('../images/cases/pk7-produçoes/Mockup flyer Oingo Boingo.png');
+}
+.case-pk7-nirvana__stage img,
+.case-pk7-beegees__stage img,
+.case-pk7-oingo__stage img {
+  display: block;
+  width: min(100%, 420px);
+  max-height: 740px;
+  object-fit: contain;
+}
+
+/* Conteúdos da campanha Nirvana para redes sociais */
+.case-pk7-social,
+.case-pk7-beegees-social,
+.case-pk7-oingo-social { background: var(--c-ionic); }
+.case-pk7-social__stage {
+  min-height: clamp(620px, 68vw, 820px);
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 72px) clamp(24px, 5vw, 64px);
+  background-color: #000;
+  background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)), url('../images/cases/pk7-produçoes/Mockup flyer turne Nirvana.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-pk7-beegees-social__stage {
+  min-height: clamp(620px, 68vw, 820px);
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 72px) clamp(24px, 5vw, 64px);
+  background-color: #000;
+  background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)), url('../images/cases/pk7-produçoes/Mockup flyer turne Bee Gees.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-pk7-oingo-social__stage {
+  min-height: clamp(620px, 68vw, 820px);
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 72px) clamp(24px, 5vw, 64px);
+  background-color: #000;
+  background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.72)), url('../images/cases/pk7-produçoes/Mockup flyer Oingo Boingo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-pk7-social__grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+.case-pk7-social__video,
+.case-pk7-social__banner { margin: 0; }
+.case-pk7-social__video { text-align: center; }
+.case-pk7-social__video video {
+  display: block;
+  width: min(100%, 320px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #000;
+  box-shadow: 0 28px 70px -24px rgba(0,0,0,0.75);
+}
+.case-pk7-social__video figcaption {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: rgba(249,240,233,0.72);
+}
+.case-pk7-social__banner img {
+  display: block;
+  width: 130%;
+  max-width: none;
+  height: auto;
+  margin-left: -15%;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .case-pk7-social__grid { grid-template-columns: 1fr; }
+  .case-pk7-social__banner { order: 2; }
+  .case-pk7-social__banner img { width: 100%; max-width: 100%; margin-left: 0; }
+}
+
+/* Anúncios online PK7 com parallax */
+.case-pk7-ads { background: var(--c-ionic); }
+.case-pk7-ads__parallax {
+  min-height: clamp(440px, 56vw, 720px);
+  background-color: #000;
+  background-image: url('../images/cases/pk7-produçoes/Anuncios Facebook -Nirvana.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.case-pk7-beegees-ads__parallax {
+  min-height: clamp(440px, 56vw, 720px);
+  background-color: #000;
+  background-image: url('../images/cases/pk7-produçoes/Anuncios Facebook - Bee gees.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.case-pk7-oingo-ads__parallax {
+  min-height: clamp(440px, 56vw, 720px);
+  background-color: #000;
+  background-image: url('../images/cases/pk7-produçoes/Anuncios Facebook - Oingo Boingo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 900px) {
+  .case-pk7-ads__parallax,
+  .case-pk7-beegees-ads__parallax,
+  .case-pk7-oingo-ads__parallax { background-attachment: scroll; }
+}
+
+.case-applications {
+  background: var(--c-ionic);
+  padding-block: clamp(56px, 8vw, 104px);
+}
+.case-applications__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 8vw, 96px);
+  margin-top: clamp(40px, 6vw, 72px);
+}
+.case-application {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(180px, 0.35fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 68px);
+  margin: 0;
+}
+.case-application--reverse { grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1.65fr); }
+.case-application--reverse .case-application__media { order: 2; }
+.case-application--reverse figcaption { order: 1; text-align: right; }
+.case-application__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  padding: clamp(18px, 3vw, 36px);
+  border-radius: 6px;
+  background: rgba(254,254,254,0.62);
+}
+.case-application__media img { width: auto; max-width: 100%; height: auto; }
+.case-application figcaption span {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.case-application figcaption h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  color: var(--c-apollo);
+}
+
+/* Aplicações HUB4 sem cards ou legendas visíveis */
+.case-hub4 .case-applications--hub4 .case-applications__list {
+  gap: clamp(48px, 8vw, 104px);
+}
+.case-hub4 .case-applications--hub4 .case-section__title {
+  color: var(--c-zeus);
+  text-align: center;
+}
+.case-hub4 .case-applications--hub4 .case-application,
+.case-hub4 .case-applications--hub4 .case-application--reverse {
+  display: block;
+  width: min(100%, 1080px);
+  margin-inline: auto;
+}
+.case-hub4 .case-applications--hub4 .case-application__media,
+.case-hub4 .case-applications--hub4 .case-application--reverse .case-application__media {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  order: initial;
+}
+.case-hub4 .case-applications--hub4 .case-application__media img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.case-reels--four .case-reels__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1200px;
+}
+.case-reels--four .case-reels__item h3 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-apollo);
+}
+.case-reels--four .case-reels__grid:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.case-site-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(24px, 4vw, 48px);
+  margin-top: 40px;
+}
+.case-site-gallery__item { margin: 0; text-align: center; }
+.case-site-gallery__item img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+.case-cta {
+  background: var(--c-ionic);
+  padding-block: clamp(48px, 6vw, 76px);
+}
+.case-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.case-cta h2 {
+  margin: 6px 0 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--c-apollo);
+}
+
+/* =========================================================
    Responsivo
    ========================================================= */
+@media (max-width: 1100px) {
+  .case-reels--four .case-reels__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 680px;
+  }
+}
 @media (max-width: 960px) {
   .case-banner__inner { grid-template-columns: 1fr; }
   .case-dev__inner { grid-template-columns: 1fr; }
@@ -486,9 +1599,49 @@
   .case-others__grid { grid-template-columns: repeat(2, 1fr); }
   .case-reels__grid { grid-template-columns: 1fr; max-width: 320px; }
   .case-site-full__browsers { grid-template-columns: 1fr; }
+  .case-banner--media::after { background: linear-gradient(180deg, rgba(18,17,8,0.14) 0%, var(--c-ionic) 68%); }
+  .case-banner__background-img { width: min(700px, 100vw); height: 58%; }
+  .case-banner--media .case-banner__inner { padding-left: clamp(24px, 5vw, 64px); }
+  .case-application,
+  .case-application--reverse { grid-template-columns: 1fr; }
+  .case-application--reverse .case-application__media,
+  .case-application--reverse figcaption { order: initial; text-align: left; }
+  .case-site-gallery { grid-template-columns: 1fr; }
+  .case-cta__inner { align-items: flex-start; flex-direction: column; }
+  .case-hub4 .case-banner--hub4 { background-position: 8% center; }
+  .case-hub4 .hub4-branding-parallax { background-attachment: scroll; }
 }
 @media (max-width: 640px) {
   .case-signatures { grid-template-columns: 1fr; }
   .case-gallery--3col { grid-template-columns: 1fr; }
   .case-others__grid { grid-template-columns: 1fr; }
+  .case-application__media { min-height: 0; padding: 14px; }
+  .case-reels--four .case-reels__grid {
+    display: flex;
+    max-width: none;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-inline: calc(clamp(24px, 5vw, 64px) * -1);
+    padding: 4px clamp(24px, 5vw, 64px) 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+  .case-reels--four .case-reels__item {
+    flex: 0 0 min(82vw, 300px);
+    scroll-snap-align: center;
+  }
+  .case-identity__mark { min-height: 180px; padding: 28px; }
+  .case-hub4 .case-applications--hub4 .case-application,
+  .case-hub4 .case-applications--hub4 .case-application--reverse { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-hub4 .hub4-branding-parallax { background-attachment: scroll; }
+  .case-resident-ads__parallax,
+  .case-phytoflora-ads__parallax,
+  .case-majestic-ads__parallax,
+  .case-pk7-ads__parallax,
+  .case-pk7-beegees-ads__parallax,
+  .case-pk7-oingo-ads__parallax { background-attachment: scroll; }
 }
