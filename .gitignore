@@ -10,3 +10,6 @@ node_modules/
 
 # Arquivos temporários de conversão.
 *.webtmp.mp4
+
+# Pasta de trabalho de logos sem fundo, não usada no site.
+images/logo-clientes-sem-fundo/
