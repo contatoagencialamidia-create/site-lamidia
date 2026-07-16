@@ -13,3 +13,10 @@ node_modules/
 
 # Pasta de trabalho de logos sem fundo, não usada no site.
 images/logo-clientes-sem-fundo/
+
+# Arquivos avulsos não usados no site (verificar depois se movem para outro lugar).
+videos/CAPA *.png
+videos/RINALDO*.mp4
+
+.vercel
+.env*
