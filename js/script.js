@@ -17,10 +17,21 @@ function generateEventId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
+// fbq é injetado pela tag "Facebook pixel - Pageview" do GTM (GTM-M3S6XFDD), não pelo
+// código do site. Retry curto cobre o caso raro de submit antes da tag do GTM disparar.
 function trackContactLead() {
-  if (typeof fbq === 'function') {
-    fbq('track', 'Lead', {}, { eventID: generateEventId() });
-  }
+  const eventId = generateEventId();
+  let attempts = 0;
+
+  const tryFire = () => {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {}, { eventID: eventId });
+    } else if (attempts++ < 20) {
+      setTimeout(tryFire, 100);
+    }
+  };
+
+  tryFire();
 }
 
 // LAMIDIA — interações do header, hero e formulário de contato
