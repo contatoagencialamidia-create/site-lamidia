@@ -1,5 +1,27 @@
-// URL pública /exec de um Google Apps Script seguro. Mantenha vazia até a integração ser publicada.
-const CONTACT_FORM_ENDPOINT = '';
+// Mesmo Web App (/exec) do Apps Script usado pela landing page (lp-estrategia-lamidia/script.js).
+// O campo "origem" no payload é o que permite ao Apps Script rotear para a aba
+// "Leads - Site Institucional" em vez da aba da landing page.
+const CONTACT_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwwVLFfCN-B_tGcHTOBKqoXu52tEJqPTSYPMzKtCogO4blj8R73cUAflZ1IW60rDiyIng/exec';
+
+function fillUtmFields(form) {
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach((key) => {
+    if (form[key]) form[key].value = params.get(key) || '';
+  });
+}
+
+function generateEventId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+  return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+function trackContactLead() {
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {}, { eventID: generateEventId() });
+  }
+}
 
 // LAMIDIA — interações do header, hero e formulário de contato
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactStatus = document.getElementById('contactStatus');
 
   if (contactForm && contactSubmit && contactStatus) {
+    fillUtmFields(contactForm);
+
     const setFormState = (state, message) => {
       contactStatus.classList.toggle('is-error', state === 'error');
       contactStatus.classList.toggle('is-success', state === 'success');
@@ -62,25 +86,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      if (!CONTACT_FORM_ENDPOINT) {
-        setFormState('error', 'O envio pelo site ainda não está disponível. Fale conosco pelo WhatsApp.');
-        return;
-      }
+      const payload = {
+        origem: 'site-institucional',
+        nome: contactForm.nome.value.trim(),
+        empresa: contactForm.empresa.value.trim(),
+        telefone: contactForm.telefone.value.trim(),
+        email: contactForm.email.value.trim(),
+        mensagem: contactForm.mensagem.value.trim(),
+        utm_source: contactForm.utm_source.value,
+        utm_medium: contactForm.utm_medium.value,
+        utm_campaign: contactForm.utm_campaign.value,
+        utm_term: contactForm.utm_term.value,
+        utm_content: contactForm.utm_content.value,
+      };
 
       setFormState('sending', 'Enviando sua mensagem…');
 
       try {
-        const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        // mode: 'no-cors' porque o Apps Script Web App não devolve headers CORS;
+        // a resposta fica opaca (não dá pra ler o corpo), então sucesso aqui só
+        // significa "o request saiu", igual ao comportamento já usado na landing page.
+        await fetch(CONTACT_FORM_ENDPOINT, {
           method: 'POST',
-          body: new URLSearchParams(new FormData(contactForm))
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
         });
-        const result = await response.json();
 
-        if (!response.ok || result.ok !== true) {
-          throw new Error('O endpoint não confirmou o recebimento.');
-        }
-
+        trackContactLead();
         contactForm.reset();
+        fillUtmFields(contactForm);
         setFormState('success', 'Mensagem enviada. Em breve entraremos em contato.');
       } catch (error) {
         console.error('Falha ao enviar o formulário de contato:', error);
